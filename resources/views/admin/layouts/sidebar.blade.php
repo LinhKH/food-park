@@ -116,6 +116,8 @@
             <li class=""><a class="nav-link" href="{{ route('admin.slider.index') }}"><i
                         class="fas fa-images"></i>
                     <span>Slider</span></a></li>
+            <li><a class="nav-link" href="{{ route('admin.why-choose-us.index') }}"><i class="far fa-square"></i>
+                    <span>Why choose us</span></a></li>
         </ul>
     </aside>
 </div>
