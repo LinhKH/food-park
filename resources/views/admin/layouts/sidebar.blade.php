@@ -127,6 +127,8 @@
                     <li><a class="nav-link" href="{{ route('admin.product.index') }}">Products</a></li>
                 </ul>
             </li>
+            <li><a class="nav-link" href="{{ route('admin.setting.index') }}"><i class="fas fa-cogs"></i>
+                    <span>Settings</span></a></li>
         </ul>
     </aside>
 </div>
