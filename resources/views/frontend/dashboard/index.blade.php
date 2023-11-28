@@ -2,8 +2,8 @@
 
 @section('content')
     <!--=============================
-                    BREADCRUMB START
-                ==============================-->
+                        BREADCRUMB START
+                    ==============================-->
     <section class="fp__breadcrumb" style="background: url({{ config('settings.breadcrumb') }});">
         <div class="fp__breadcrumb_overlay">
             <div class="container">
@@ -18,13 +18,13 @@
         </div>
     </section>
     <!--=============================
-                    BREADCRUMB END
-                ==============================-->
+                        BREADCRUMB END
+                    ==============================-->
 
 
     <!--=========================
-                    DASHBOARD START
-                ==========================-->
+                        DASHBOARD START
+                    ==========================-->
     <section class="fp__dashboard mt_120 xs_mt_90 mb_100 xs_mb_70">
         <div class="container">
             <div class="fp__dashboard_area">
@@ -136,7 +136,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
                                 class="fal fa-times"></i></button>
                         <div class="fp__cart_popup_img">
-                            <img src="images/menu1.png" alt="menu" class="img-fluid w-100">
+                            <img src="{{ asset('frontend/images/menu1.png') }}" alt="menu" class="img-fluid w-100">
                         </div>
                         <div class="fp__cart_popup_text">
                             <a href="#" class="title">Maxican Pizza Test Better</a>
@@ -213,8 +213,8 @@
     </div>
     <!-- CART POPUT END -->
     <!--=========================
-                    DASHBOARD END
-                ==========================-->
+                        DASHBOARD END
+                    ==========================-->
 @endsection
 
 @push('scripts')
