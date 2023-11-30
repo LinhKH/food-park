@@ -154,7 +154,7 @@
                             @endif
                         </div>
 
-                        <a class="common_btn" href="{{ route('checkout.index') }}">checkout</a>
+                        <a class="common_btn" href="">checkout</a>
                     </div>
                 </div>
             </div>
@@ -302,49 +302,8 @@
                 let code = $("#coupon_code").val();
                 let subtotal = cartTotal;
 
-                couponApply(code, subtotal);
             })
 
-
-            function couponApply(code, subtotal) {
-                $.ajax({
-                    method: 'POST',
-                    url: '{{ route('apply-coupon') }}',
-                    data: {
-                        code: code,
-                        subtotal: subtotal
-                    },
-                    beforeSend: function() {
-                        showLoader()
-                    },
-                    success: function(response) {
-                        $("#coupon_code").val("");
-                        $('#discount').text("{{ config('settings.site_currency_icon') }}" + response
-                            .discount);
-                        $('#final_total').text("{{ config('settings.site_currency_icon') }}" + response
-                            .finalTotal);
-                        $couponCartHtml = `<div class="card mt-2">
-                            <div class="m-3">
-                                <span><b class="v_coupon_code">Applied Couppon: ${response.coupon_code}</b></span>
-                                <span>
-                                    <button id="destroy_coupon"><i class="far fa-times"></i></button>
-                                </span>
-                            </div>
-                        </div>`
-                        $('.coupon_card').html($couponCartHtml);
-                        toastr.success(response.message);
-                    },
-                    error: function(xhr, status, error) {
-                        let errorMessage = xhr.responseJSON.message;
-                        hideLoader()
-
-                        toastr.error(errorMessage);
-                    },
-                    complete: function() {
-                        hideLoader()
-                    }
-                })
-            }
 
             $(document).on('click', "#destroy_coupon", function() {
                 destroyCoupon();
@@ -353,7 +312,7 @@
             function destroyCoupon() {
                 $.ajax({
                     method: 'GET',
-                    url: '{{ route('destroy-coupon') }}',
+                    url: '',
                     beforeSend: function() {
                         showLoader();
                     },
