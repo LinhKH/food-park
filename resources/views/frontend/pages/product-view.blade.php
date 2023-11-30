@@ -167,77 +167,14 @@
                                 <div class="fp__review_area">
                                     <div class="row">
                                         <div class="col-lg-8">
-                                            <h4>{{ count($reviews) }} reviews</h4>
+                                            <h4> reviews</h4>
                                             <div class="fp__comment pt-0 mt_20">
-                                                @foreach ($reviews as $review)
-                                                <div class="fp__single_comment m-0 border-0">
-                                                    <img src="{{asset($review->user->avatar)}}" alt="review" class="img-fluid">
-                                                    <div class="fp__single_comm_text">
-                                                        <h3>{{ $review->user->name }} <span>{{ date('d m Y', strtotime($review->created_at)) }} </span></h3>
-                                                        <span class="rating">
-                                                            @for ($i = 1; $i <= $review->rating; $i++)
-                                                            <i class="fas fa-star"></i>
-                                                            @endfor
 
-
-                                                        </span>
-                                                        <p>{{ $review->review }}</p>
-                                                    </div>
-                                                </div>
-                                                @endforeach
-                                                @if ($reviews->hasPages())
-                                                <div class="fp__pagination mt_60">
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            {{ $reviews->links() }}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                @endif
-                                                @if (count($reviews) === 0)
-                                                    <div class="alert alert-warning mt-4">No review found!</div>
-                                                @endif
 
                                             </div>
 
                                         </div>
-                                        @auth
-                                        <div class="col-lg-4">
-                                            <div class="fp__post_review">
-                                                <h4>write a Review</h4>
-                                                <form action="{{ route('product-review.store') }}" method="POST">
-                                                    @csrf
-                                                    <div class="row">
-                                                        <div class="col-xl-12 mt-3">
-                                                            <label> Choose a rating</label>
-                                                            <select name="rating" id="rating_input" class="form-control ">
-                                                                <option value="5">5</option>
-                                                                <option value="4">4</option>
-                                                                <option value="3">3</option>
-                                                                <option value="2">2</option>
-                                                                <option value="1">1</option>
-                                                            </select>
-                                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                                        </div>
 
-                                                        <div class="col-xl-12">
-                                                            <label for="">Review</label>
-                                                            <textarea style="margin-top: 2px" name="review" rows="3" placeholder="Write your review"></textarea>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <button class="common_btn" type="submit">submit
-                                                                review</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        @else
-                                        <div class="col-lg-4">
-                                            <h4>write a Review</h4>
-                                            <div class="alert alert-warning mt-4">Please login first to add review.</div>
-                                        </div>
-                                        @endauth
                                     </div>
                                 </div>
                             </div>
