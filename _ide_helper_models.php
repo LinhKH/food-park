@@ -154,6 +154,7 @@ namespace App\Models{
  * @property string $order_status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int|null $address_id
  * @property-read \App\Models\DeliveryArea $deliveryArea
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\OrderItem> $orderItems
  * @property-read int|null $order_items_count
@@ -163,6 +164,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Order newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Order query()
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereAddressId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereCouponInfo($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereCurrencyName($value)
@@ -213,6 +215,17 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereUpdatedAt($value)
  */
 	class OrderItem extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\PaymentGatewaySetting
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|PaymentGatewaySetting newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PaymentGatewaySetting newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PaymentGatewaySetting query()
+ */
+	class PaymentGatewaySetting extends \Eloquent {}
 }
 
 namespace App\Models{

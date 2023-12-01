@@ -52,6 +52,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     /** Delivery Area Routes */
     Route::resource('delivery-area', DeliveryAreaController::class);
 
+    /** Payment Gateway Setting Routes */
+    Route::get('/payment-gateway-setting', [PaymentGatewaySettingController::class, 'index'])->name('payment-setting.index');
+
     /** Setting Routes */
     Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');
     Route::put('/general-setting', [SettingController::class, 'UpdateGeneralSetting'])->name('general-setting.update');
