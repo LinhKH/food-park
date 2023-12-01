@@ -12,6 +12,18 @@
 
 namespace App\Models{
 /**
+ * App\Models\Address
+ *
+ * @property-read \App\Models\DeliveryArea|null $deliveryArea
+ * @method static \Illuminate\Database\Eloquent\Builder|Address newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Address newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Address query()
+ */
+	class Address extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Category
  *
  * @property int $id
@@ -34,6 +46,68 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereUpdatedAt($value)
  */
 	class Category extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Coupon
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $code
+ * @property int $quantity
+ * @property int $min_purchase_amount
+ * @property string $expire_date
+ * @property string $discount_type
+ * @property float $discount
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Database\Factories\CouponFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereDiscount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereDiscountType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereExpireDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereMinPurchaseAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereUpdatedAt($value)
+ */
+	class Coupon extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\DeliveryArea
+ *
+ * @property int $id
+ * @property string $area_name
+ * @property string $min_delivery_time
+ * @property string $max_delivery_time
+ * @property float $delivery_fee
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Database\Factories\DeliveryAreaFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|DeliveryArea newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DeliveryArea newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DeliveryArea query()
+ * @method static \Illuminate\Database\Eloquent\Builder|DeliveryArea whereAreaName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DeliveryArea whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DeliveryArea whereDeliveryFee($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DeliveryArea whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DeliveryArea whereMaxDeliveryTime($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DeliveryArea whereMinDeliveryTime($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DeliveryArea whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DeliveryArea whereUpdatedAt($value)
+ */
+	class DeliveryArea extends \Eloquent {}
 }
 
 namespace App\Models{

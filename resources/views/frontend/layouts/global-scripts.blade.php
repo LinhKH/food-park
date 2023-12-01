@@ -132,4 +132,13 @@
     function getCartTotal() {
         return parseInt("{{ cartTotal() }}");
     }
+
+    //*==========DASHBOARD ADDRESS==========
+    $(".dash_add_new_address").on("click", function () {
+        $(".address_body").addClass("show_new_address");
+    });
+    $(".cancel_new_address").on("click", function () {
+        $(".address_body").removeClass("show_new_address");
+    });
+    //*==========DASHBOARD ADDRESS END==========
 </script>
