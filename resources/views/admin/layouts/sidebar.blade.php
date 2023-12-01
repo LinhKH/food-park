@@ -127,6 +127,14 @@
                     <li><a class="nav-link" href="{{ route('admin.product.index') }}">Products</a></li>
                 </ul>
             </li>
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                        class="fas fa-columns"></i>
+                    <span>Manage Ecommerce </span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="{{ route('admin.coupon.index') }}">Coupon</a></li>
+                </ul>
+            </li>
             <li><a class="nav-link" href="{{ route('admin.setting.index') }}"><i class="fas fa-cogs"></i>
                     <span>Settings</span></a></li>
         </ul>

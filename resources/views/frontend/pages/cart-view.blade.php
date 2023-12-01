@@ -2,8 +2,8 @@
 
 @section('content')
     <!--=============================
-                    BREADCRUMB START
-                ==============================-->
+                            BREADCRUMB START
+                        ==============================-->
     <section class="fp__breadcrumb" style="background: url({{ asset(config('settings.breadcrumb')) }});">
         <div class="fp__breadcrumb_overlay">
             <div class="container">
@@ -18,13 +18,13 @@
         </div>
     </section>
     <!--=============================
-                    BREADCRUMB END
-                ==============================-->
+                            BREADCRUMB END
+                        ==============================-->
 
 
     <!--============================
-                    CART VIEW START
-                ==============================-->
+                            CART VIEW START
+                        ==============================-->
     <section class="fp__cart_view mt_125 xs_mt_95 mb_100 xs_mb_70">
         <div class="container">
             <div class="row">
@@ -127,12 +127,8 @@
                                 @endif
                             </span></p>
                         <p class="total"><span>total:</span> <span id="final_total">
-                                @if (isset(session()->get('coupon')['discount']))
-                                    {{ config('settings.site_currency_icon') }}
-                                    {{ cartTotal() - session()->get('coupon')['discount'] }}
-                                @else
-                                    {{ config('settings.site_currency_icon') }} {{ cartTotal() }}
-                                @endif
+                                {{ config('settings.site_currency_icon') }}
+                                {{ grandCartTotal() }}
                             </span></p>
                         <form id="coupon_form">
                             <input type="text" id="coupon_code" name="code" placeholder="Coupon Code">
@@ -161,8 +157,8 @@
         </div>
     </section>
     <!--============================
-                    CART VIEW END
-                ==============================-->
+                            CART VIEW END
+                        ==============================-->
 @endsection
 
 @push('scripts')
@@ -302,8 +298,48 @@
                 let code = $("#coupon_code").val();
                 let subtotal = cartTotal;
 
+                couponApply(code, subtotal);
             })
 
+            function couponApply(code, subtotal) {
+                $.ajax({
+                    method: 'POST',
+                    url: '{{ route('apply-coupon') }}',
+                    data: {
+                        code: code,
+                        subtotal: subtotal
+                    },
+                    beforeSend: function() {
+                        showLoader()
+                    },
+                    success: function(response) {
+                        $("#coupon_code").val("");
+                        $('#discount').text("{{ config('settings.site_currency_icon') }}" + response
+                            .discount);
+                        $('#final_total').text("{{ config('settings.site_currency_icon') }}" + response
+                            .finalTotal);
+                        $couponCartHtml = `<div class="card mt-2">
+                            <div class="m-3">
+                                <span><b class="v_coupon_code">Applied Couppon: ${response.coupon_code}</b></span>
+                                <span>
+                                    <button id="destroy_coupon"><i class="far fa-times"></i></button>
+                                </span>
+                            </div>
+                        </div>`
+                        $('.coupon_card').html($couponCartHtml);
+                        toastr.success(response.message);
+                    },
+                    error: function(xhr, status, error) {
+                        let errorMessage = xhr.responseJSON.message;
+                        hideLoader()
+
+                        toastr.error(errorMessage);
+                    },
+                    complete: function() {
+                        hideLoader()
+                    }
+                })
+            }
 
             $(document).on('click', "#destroy_coupon", function() {
                 destroyCoupon();
@@ -312,7 +348,7 @@
             function destroyCoupon() {
                 $.ajax({
                     method: 'GET',
-                    url: '',
+                    url: '{{ route('destroy-coupon') }}',
                     beforeSend: function() {
                         showLoader();
                     },
