@@ -155,7 +155,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int|null $address_id
- * @property-read \App\Models\DeliveryArea $deliveryArea
+ * @property-read \App\Models\DeliveryArea|null $deliveryArea
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\OrderItem> $orderItems
  * @property-read int|null $order_items_count
  * @property-read \App\Models\User $user
@@ -221,9 +221,19 @@ namespace App\Models{
 /**
  * App\Models\PaymentGatewaySetting
  *
+ * @property int $id
+ * @property string $key
+ * @property string|null $value
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|PaymentGatewaySetting newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PaymentGatewaySetting newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PaymentGatewaySetting query()
+ * @method static \Illuminate\Database\Eloquent\Builder|PaymentGatewaySetting whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PaymentGatewaySetting whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PaymentGatewaySetting whereKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PaymentGatewaySetting whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PaymentGatewaySetting whereValue($value)
  */
 	class PaymentGatewaySetting extends \Eloquent {}
 }

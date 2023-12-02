@@ -151,6 +151,7 @@ class PaymentController extends Controller
             ];
 
             OrderPaymentUpdateEvent::dispatch($orderId, $paymentInfo, 'PayPal');
+            OrderPlacedNotificationEvent::dispatch($orderId);
 
             /** Clear session data */
             $orderService->clearSession();
@@ -160,6 +161,18 @@ class PaymentController extends Controller
             $this->transactionFailUpdateStatus('PayPal');
             return redirect()->route('payment.cancel')->withErrors(['error' => $response['error']['message']]);
         }
+    }
+
+    function transactionFailUpdateStatus($gatewayName): void
+    {
+        $orderId = session()->get('order_id');
+        $paymentInfo = [
+            'transaction_id' => '',
+            'currency' => '',
+            'status' => 'Failed'
+        ];
+
+        OrderPaymentUpdateEvent::dispatch($orderId, $paymentInfo, $gatewayName);
     }
 
 
